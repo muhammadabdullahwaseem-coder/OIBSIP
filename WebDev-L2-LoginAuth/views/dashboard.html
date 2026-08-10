@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Dashboard | OIBSIP Auth System</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <div class="auth-wrapper dashboard-wrapper">
+        <div class="auth-card">
+            
+            <div class="auth-header">
+                <span class="brand-badge">Protected Route</span>
+                <h1 class="auth-title">User Dashboard</h1>
+                <p class="auth-subtitle">You are securely authenticated with an active session</p>
+            </div>
+
+            <!-- Profile Info Card -->
+            <div class="user-profile-card">
+                <div class="profile-header">
+                    <div id="user-avatar" class="user-avatar">U</div>
+                    <div>
+                        <h2 id="user-display-name" style="font-size: 1.25rem; font-weight: 700;">Loading...</h2>
+                        <span class="status-tag">Active Session</span>
+                    </div>
+                </div>
+
+                <div class="info-table">
+                    <div class="info-row">
+                        <span class="info-label">User ID:</span>
+                        <span id="user-id" class="info-val">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Username:</span>
+                        <span id="user-username" class="info-val">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email Address:</span>
+                        <span id="user-email" class="info-val">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Member Since:</span>
+                        <span id="user-created" class="info-val">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logout Form Button -->
+            <button id="logout-btn" class="btn-logout">
+                🚪 Log Out of Session
+            </button>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const avatarEl = document.getElementById('user-avatar');
+            const displayNameEl = document.getElementById('user-display-name');
+            const userIdEl = document.getElementById('user-id');
+            const usernameEl = document.getElementById('user-username');
+            const emailEl = document.getElementById('user-email');
+            const createdEl = document.getElementById('user-created');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            // Fetch current authenticated user session data from API
+            try {
+                const response = await fetch('/api/user');
+                if (!response.ok) {
+                    // Unauthorized -> Redirect to login
+                    window.location.href = '/login';
+                    return;
+                }
+
+                const data = await response.json();
+                if (data.authenticated && data.user) {
+                    const u = data.user;
+                    avatarEl.textContent = u.username.charAt(0).toUpperCase();
+                    displayNameEl.textContent = `Welcome, ${u.username}!`;
+                    userIdEl.textContent = `#${u.id}`;
+                    usernameEl.textContent = u.username;
+                    emailEl.textContent = u.email;
+                    createdEl.textContent = u.createdAt ? new Date(u.createdAt).toLocaleDateString() : 'Active Member';
+                } else {
+                    window.location.href = '/login';
+                }
+            } catch (err) {
+                window.location.href = '/login';
+            }
+
+            // Logout Handler
+            logoutBtn.addEventListener('click', async () => {
+                try {
+                    const response = await fetch('/logout', { method: 'POST' });
+                    const resData = await response.json();
+                    if (resData.redirect) {
+                        window.location.href = resData.redirect;
+                    } else {
+                        window.location.href = '/login';
+                    }
+                } catch (e) {
+                    window.location.href = '/login';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

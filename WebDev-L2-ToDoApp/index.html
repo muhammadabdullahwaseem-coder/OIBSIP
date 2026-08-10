@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A feature-rich interactive To-Do list web application built with HTML5, CSS3, and Vanilla JavaScript for OIBSIP Web Development Task 3.">
+    <title>TaskPulse | Interactive To-Do App</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark">
+
+    <!-- Ambient Glowing Background -->
+    <div class="ambient-bg">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="app-wrapper">
+        
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-brand">
+                <div class="brand-icon">✓</div>
+                <div>
+                    <h1 class="app-title">TaskPulse</h1>
+                    <p class="app-subtitle">OIBSIP WebDev Task 3 • Smart Task Management</p>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-box">
+                    <span class="stat-val" id="total-tasks-stat">0</span>
+                    <span class="stat-label">Total</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-val" id="completed-pct-stat">0%</span>
+                    <span class="stat-label">Done</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Task Input Form Card -->
+        <section class="card input-card">
+            <form id="todo-form" class="todo-form">
+                <div class="input-group">
+                    <input type="text" id="task-input" class="form-control task-input" placeholder="Add a new task (e.g., Complete project report)..." autocomplete="off" required>
+                    <div class="form-controls">
+                        <select id="task-priority" class="form-select priority-select" aria-label="Task Priority">
+                            <option value="low">Low Priority</option>
+                            <option value="medium" selected>Medium Priority</option>
+                            <option value="high">High Priority</option>
+                        </select>
+                        <button type="submit" id="add-task-btn" class="btn btn-primary">
+                            <span class="btn-icon">+</span>
+                            <span>Add Task</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- Search & Filter Controls Bar -->
+        <section class="filter-bar">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Filter tasks by keyword...">
+            </div>
+            <div class="filter-options">
+                <select id="filter-priority-select" class="form-select mini-select" aria-label="Filter Priority">
+                    <option value="all">All Priorities</option>
+                    <option value="high">High Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Main Task Sections (Pending & Completed) -->
+        <main class="tasks-container">
+            
+            <!-- Pending Tasks Section -->
+            <section class="task-section pending-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <h2>Pending Tasks</h2>
+                        <span id="pending-count-badge" class="badge badge-pending">0 Pending</span>
+                    </div>
+                </div>
+                
+                <ul id="pending-task-list" class="task-list"></ul>
+
+                <!-- Empty State for Pending Tasks -->
+                <div id="pending-empty-state" class="empty-state">
+                    <div class="empty-icon">✨</div>
+                    <h3>No Pending Tasks</h3>
+                    <p>All caught up! Type a task above to add it to your queue.</p>
+                </div>
+            </section>
+
+            <!-- Completed Tasks Section -->
+            <section class="task-section completed-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <h2>Completed Tasks</h2>
+                        <span id="completed-count-badge" class="badge badge-completed">0 Completed</span>
+                    </div>
+                    <button type="button" id="clear-completed-btn" class="text-btn danger-text">Clear All</button>
+                </div>
+
+                <ul id="completed-task-list" class="task-list"></ul>
+
+                <!-- Empty State for Completed Tasks -->
+                <div id="completed-empty-state" class="empty-state">
+                    <div class="empty-icon">🎯</div>
+                    <h3>No Completed Tasks</h3>
+                    <p>Mark tasks as complete to move them here.</p>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Toast Feedback Notification -->
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+    <!-- Deferred JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>

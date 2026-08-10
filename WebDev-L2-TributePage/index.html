@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A tribute page celebrating the life, inventions, and legacy of Nikola Tesla - The Genius Who Lit the World.">
+    <title>Nikola Tesla | The Genius Who Lit the World</title>
+
+    <!-- Google Fonts: Serif for Headings & Sans-Serif for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="#hero" class="brand-logo">
+                <span class="logo-symbol">⚡</span>
+                <span class="logo-text">TESLA TRIBUTE</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#biography">Biography</a>
+                <a href="#achievements">Achievements</a>
+                <a href="#quotes">Quotes</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+        
+        <!-- Hero Section (Title, Tagline, Hero Image) -->
+        <section id="hero" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-container">
+                <div class="hero-badge">1856 – 1943 • Visionary Inventor</div>
+                <h1 class="hero-title">Nikola Tesla</h1>
+                <p class="hero-tagline">The Genius Who Lit the World with Alternating Current</p>
+                
+                <!-- Prominent Hero Image -->
+                <div class="hero-image-wrapper">
+                    <img src="images/tesla-hero.png" alt="Nikola Tesla surrounded by high-voltage glowing electric coils in his laboratory" class="hero-image">
+                    <div class="image-caption">
+                        <span>Nikola Tesla in his Colorado Springs Laboratory beside high-frequency electrical arcs (1899)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Biography Section (3 Detailed Paragraphs) -->
+        <section id="biography" class="biography-section">
+            <div class="section-container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Life & Legacy</span>
+                    <h2 class="section-title">Biography of a Master Mind</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div class="bio-content">
+                    <div class="bio-card">
+                        <div class="bio-number">01</div>
+                        <h3>Early Life & Obsession with Physics</h3>
+                        <p>
+                            Born on July 10, 1856, during a fierce lightning storm in Smiljan, Austrian Empire (modern-day Croatia), Nikola Tesla possessed an extraordinary visual imagination and eidetic memory from an early age. Encouraged by his mother's inventive knack for household tools, Tesla studied engineering and physics at the Technical University of Graz and Charles-Ferdinand University in Prague. It was during these formative academic years that he became obsessed with the inefficiencies of direct current (DC) dynamos and envisioned a revolutionary motor powered by rotating magnetic fields.
+                        </p>
+                    </div>
+
+                    <div class="bio-card">
+                        <div class="bio-number">02</div>
+                        <h3>The War of Currents & Powering Niagara</h3>
+                        <p>
+                            Immigrating to the United States in 1884 with little more than four cents in his pocket and a letter of recommendation to Thomas Edison, Tesla quickly embarked on a path that would change human civilization. After parting ways with Edison due to fundamental design disagreements over Direct Current, Tesla patented his groundbreaking Alternating Current (AC) polyphase system. Partnering with industrialist George Westinghouse, Tesla defeated Edison's DC standard in the famous "War of Currents," culminating in illuminating the 1893 World's Columbian Exposition in Chicago and building the world's first hydroelectric power plant at Niagara Falls.
+                        </p>
+                    </div>
+
+                    <div class="bio-card">
+                        <div class="bio-number">03</div>
+                        <h3>Future Vision & Enduring Legacy</h3>
+                        <p>
+                            Throughout his prolific career, Tesla filed over 300 patents worldwide, pioneering technologies decades ahead of his era—including high-frequency Tesla Coils, wireless radio transmissions, neon illumination, remote radio control, and early X-ray imaging. Despite his immense scientific contributions, his ambitious Wardenclyffe Tower project aimed at global wireless energy broadcast collapsed due to financial difficulties. Tesla spent his final years in New York City continuing his conceptual research until his death in 1943. Today, his name remains synonymous with genius, innovation, and the international SI unit of magnetic flux density.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Achievements & Inventions Section (Timeline Cards) -->
+        <section id="achievements" class="achievements-section">
+            <div class="section-container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Milestones</span>
+                    <h2 class="section-title">Key Inventions & Achievements</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div class="timeline-grid">
+                    
+                    <!-- Card 1 -->
+                    <article class="timeline-card">
+                        <div class="card-year">1887</div>
+                        <div class="card-icon">⚡</div>
+                        <h3 class="card-title">AC Induction Motor</h3>
+                        <p class="card-desc">Designed the brushless alternating current induction motor, eliminating sparking commutators and enabling long-distance electrical power transmission across continents.</p>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="timeline-card">
+                        <div class="card-year">1891</div>
+                        <div class="card-icon">🌀</div>
+                        <h3 class="card-title">The Tesla Coil</h3>
+                        <p class="card-desc">Invented the high-frequency resonant transformer capable of producing electrical sparks extending several feet, foundational to wireless technology, radio, and television physics.</p>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="timeline-card">
+                        <div class="card-year">1893</div>
+                        <div class="card-icon">💡</div>
+                        <h3 class="card-title">Chicago World's Fair</h3>
+                        <p class="card-desc">Illuminated the World's Columbian Exposition using Westinghouse AC generators, proving to the world that AC power was safe, reliable, and superior to DC.</p>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="timeline-card">
+                        <div class="card-year">1895</div>
+                        <div class="card-icon">🌊</div>
+                        <h3 class="card-title">Niagara Falls Power Plant</h3>
+                        <p class="card-desc">Constructed the first large-scale hydroelectric power plant at Niagara Falls, delivering industrial electrical current to Buffalo, New York 22 miles away.</p>
+                    </article>
+
+                    <!-- Card 5 -->
+                    <article class="timeline-card">
+                        <div class="card-year">1898</div>
+                        <div class="card-icon">📡</div>
+                        <h3 class="card-title">Remote Control Teleautomaton</h3>
+                        <p class="card-desc">Demonstrated a radio-controlled miniature boat at Madison Square Garden, introducing the concept of robotics, remote control, and radio frequency guidance.</p>
+                    </article>
+
+                    <!-- Card 6 -->
+                    <article class="timeline-card">
+                        <div class="card-year">1901</div>
+                        <div class="card-icon">🌐</div>
+                        <h3 class="card-title">Wardenclyffe Wireless Tower</h3>
+                        <p class="card-desc">Initiated the construction of a 187-foot wireless transmission tower on Long Island designed for worldwide wireless communication and electrical power distribution.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Blockquote Section -->
+        <section id="quotes" class="quote-section">
+            <div class="section-container">
+                <div class="quote-wrapper">
+                    <div class="quote-mark">“</div>
+                    <blockquote class="featured-quote">
+                        If you want to find the secrets of the universe, think in terms of energy, frequency and vibration.
+                    </blockquote>
+                    <cite class="quote-author">— Nikola Tesla</cite>
+                </div>
+
+                <div class="secondary-quotes">
+                    <div class="mini-quote">
+                        <p>"The present is theirs; the future, for which I really worked, is mine."</p>
+                    </div>
+                    <div class="mini-quote">
+                        <p>"My brain is only a receiver, in the Universe there is a core from which we obtain knowledge, strength and inspiration."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="footer-logo">⚡ NIKOLA TESLA TRIBUTE</span>
+                <p>OIBSIP Web Development Task 1 - Tribute Page</p>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; 2026 Crafted with precision and admiration for scientific innovation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script (Smooth Scroll & Reveal) -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | OIBSIP Auth System</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            
+            <div class="auth-header">
+                <span class="brand-badge">OIBSIP Task 4</span>
+                <h1 class="auth-title">Create Account</h1>
+                <p class="auth-subtitle">Join our secure user management platform</p>
+            </div>
+
+            <!-- Dynamic Alert Message -->
+            <div id="alert-box" class="alert-box hidden" role="alert"></div>
+
+            <!-- Registration Form -->
+            <form id="register-form" class="auth-form" novalidate>
+                
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" name="username" class="input-field" placeholder="e.g. johndoe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" name="email" class="input-field" placeholder="e.g. john@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="input-field" placeholder="••••••••" required>
+                    <span class="hint-text">Must be at least 8 characters long & include 1 number.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="input-field" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" id="submit-btn" class="btn-submit">Register Account</button>
+            </form>
+
+            <div class="auth-footer">
+                Already have an account? <a href="/login" class="auth-link">Sign In</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('register-form');
+            const alertBox = document.getElementById('alert-box');
+            const submitBtn = document.getElementById('submit-btn');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                alertBox.className = 'alert-box hidden';
+
+                const username = document.getElementById('username').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                // Client-side validation check
+                if (!username || !email || !password || !confirmPassword) {
+                    showAlert('Please fill in all required fields.', 'danger');
+                    return;
+                }
+
+                if (password !== confirmPassword) {
+                    showAlert('Passwords do not match.', 'danger');
+                    return;
+                }
+
+                if (password.length < 8 || !/\d/.test(password)) {
+                    showAlert('Password must be at least 8 characters long and contain at least one number.', 'danger');
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Creating Account...';
+
+                try {
+                    const response = await fetch('/register', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, email, password, confirmPassword })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.success) {
+                        showAlert(data.message, 'success');
+                        setTimeout(() => {
+                            window.location.href = '/login';
+                        }, 1500);
+                    } else {
+                        showAlert(data.error || 'Registration failed.', 'danger');
+                    }
+                } catch (err) {
+                    showAlert('Network error. Please try again.', 'danger');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Register Account';
+                }
+            });
+
+            function showAlert(msg, type) {
+                alertBox.textContent = msg;
+                alertBox.className = `alert-box alert-${type}`;
+            }
+        });
+    </script>
+</body>
+</html>
