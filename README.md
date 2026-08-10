@@ -1,4 +1,4 @@
-# 🚀 Oasis Infobyte (OIBSIP) - Web Development Level 2 Internship Portfolio
+#  Oasis Infobyte (OIBSIP) - Web Development Level 2 Internship Portfolio
 
 Welcome to the central repository for the **Oasis Infobyte Web Development & Designing Internship (OIBSIP) - Level 2 Tasks**. This repository contains four fully functional, modern web application projects built with clean architecture, high-aesthetic styling, and strict security practices.
 
